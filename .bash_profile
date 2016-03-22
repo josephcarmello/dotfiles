@@ -35,8 +35,8 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
 
 #FUNCTIONS FOR THE MODERN WORLD
 
-#{go} -- Easier ssh just =  go $HOSTNAME
-#--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=-=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--#
+#   go:  SSH for my work computer
+#   ---------------------------------------------------------
 	function go(){
 		 ssh jcarmello@"$1"; 
 	}
