@@ -1,6 +1,9 @@
 ulimit -S -n 2048
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 export PATH="/usr/local/bin/packer:$PATH"
+#GENERAL SETTINGS
+
+HISTFILESIZE=10000000
 
 #COLORS AND SHIT
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
