@@ -12,17 +12,27 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 #ALIAS TO MAKE THINGS A FUCK TON EASIER
 
+#ALLOW ALIAS TO BE SUDO'd
+alias sudo='sudo '
+
+#RECURSIVELY REMOVE .DS_STORE FILES
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
 #COLORED LS
 alias ls='ls -GFh'
-
-#Show all TCP/UDP Ports in Use
-alias ports='netstat -tulanp'
 
 #FULL OUTPUT LS
 alias ll="ls -ahltrGF"
 
 #SHORTHANDED HISTORY
+alias d="cd ~/Dropbox"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias p="cd ~/Projects"
+alias g="git"
 alias h="history"
+alias j="jobs"
+alias v="vim"
 
 #NETWORKING
 alias myip='curl ip.appspot.com'                    # myip:         Public facing IP Address
@@ -35,6 +45,16 @@ alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on 
 alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
 alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
 alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
+alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+
+
+#SHOW/HIDE EVERYTHING - GREAT FOR PRESENTATIONS
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+
+
 
 #FUNCTIONS FOR THE MODERN WORLD
 
