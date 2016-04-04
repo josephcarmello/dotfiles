@@ -103,3 +103,8 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
         echo
     }
 
+ #   headers:  get the headers of a cURL request
+  #   ---------------------------------------------------------
+       function headers(){
+                 curl -is "$@" | sed '/^$/,$d'
+                      }
