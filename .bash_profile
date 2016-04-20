@@ -24,7 +24,7 @@ alias ls='ls -GFh'
 #FULL OUTPUT LS
 alias ll="ls -ahltrGF"
 
-#SHORTHANDED HISTORY
+#SHORTHANDED
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
@@ -46,7 +46,7 @@ alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on 
 alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
 alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
+alias sshi="ssh -i ~/.ssh/joeyc-keypair.pem"        # ssh /w aws    SSH command that sutomatically uses AWS pem
 
 
 #SHOW/HIDE EVERYTHING - GREAT FOR PRESENTATIONS
