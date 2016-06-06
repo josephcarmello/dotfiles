@@ -1,6 +1,6 @@
 ulimit -S -n 2048
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-export PATH="/usr/local/bin/packer:$PATH"
+#export PATH="/usr/local/bin/packer:$PATH"
 #GENERAL SETTINGS
 
 HISTFILESIZE=10000000
@@ -108,3 +108,12 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
        function headers(){
                  curl -is "$@" | sed '/^$/,$d'
                       }
+
+##
+# Your previous /Users/joey.carmello/.bash_profile file was backed up as /Users/joey.carmello/.bash_profile.macports-saved_2016-04-25_at_13:30:49
+##
+
+# MacPorts Installer addition on 2016-04-25_at_13:30:49: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
