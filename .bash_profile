@@ -1,5 +1,10 @@
 ulimit -S -n 2048
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
+for file in ~/.{aliases,functions}; do
+  [ -r "$file" ] && source "$file"
+done
+
 #export PATH="/usr/local/bin/packer:$PATH"
 #GENERAL SETTINGS
 
@@ -9,52 +14,6 @@ HISTFILESIZE=10000000
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-
-#ALIAS TO MAKE THINGS A FUCK TON EASIER
-
-#ALLOW ALIAS TO BE SUDO'd
-alias sudo='sudo '
-
-#RECURSIVELY REMOVE .DS_STORE FILES
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-#COLORED LS
-alias ls='ls -GFh'
-
-#FULL OUTPUT LS
-alias ll="ls -ahltrGF"
-
-#SHORTHANDED
-alias d="cd ~/Dropbox"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
-alias g="git"
-alias h="history"
-alias j="jobs"
-alias v="vim"
-
-#NETWORKING
-alias myip='curl ifconfig.me'                       # myip:         Public facing IP Address
-alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
-alias flushDNS='dscacheutil -flushcache'            # flushDNS:     Flush out the DNS Cache
-alias lsock='sudo /usr/sbin/lsof -i -P'             # lsock:        Display open sockets
-alias lsockU='sudo /usr/sbin/lsof -nP | grep UDP'   # lsockU:       Display only open UDP sockets
-alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'   # lsockT:       Display only open TCP sockets
-alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
-alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
-alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
-alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
-alias flush="sudo killall -HUP mDNSResponder"
-alias sshi="ssh -i ~/.ssh/joeyc-keypair.pem"        # ssh /w aws    SSH command that sutomatically uses AWS pem
-
-
-#SHOW/HIDE EVERYTHING - GREAT FOR PRESENTATIONS
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-
-
 
 #FUNCTIONS FOR THE MODERN WORLD
 
