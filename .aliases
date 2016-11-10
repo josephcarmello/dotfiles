@@ -35,8 +35,14 @@ alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listenin
 alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
 alias flush="sudo killall -HUP mDNSResponder"
 alias sshi="ssh -i ~/.ssh/joeyc-keypair.pem"        # ssh /w aws    SSH command that sutomatically uses AWS pem
-
+alias vpnf="ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 admin@192.168.96.254"
 
 #SHOW/HIDE EVERYTHING - GREAT FOR PRESENTATIONS
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+#THEFUCK AUTOREPAIR COMMANDS
+eval $(thefuck --alias fuck)
+eval $(thefuck --alias crap)
+eval $(thefuck --alias shit)
+eval $(thefuck --alias FUCK)
