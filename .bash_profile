@@ -16,7 +16,7 @@ HISTFILESIZE=10000000
 
 #   go:  SSH for my work computer
 #   ---------------------------------------------------------
-	function go(){
+	function gos(){
 		 ssh jcarmello@"$1"; 
 	}
 
