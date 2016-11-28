@@ -14,10 +14,14 @@ HISTFILESIZE=10000000
 
 #FUNCTIONS FOR THE MODERN WORLD
 
-#   go:  SSH for my work computer
+#   gos:  SSH for my work computer
 #   ---------------------------------------------------------
 	function gos(){
-		 ssh jcarmello@"$1"; 
+	    if [[ $# -eq 0 ]]; then
+            echo "No arguments provided"
+        else
+            ssh jcarmello@"$1";
+        fi
 	}
 
 
