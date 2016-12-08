@@ -1,5 +1,5 @@
 ulimit -S -n 2048
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+#[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
 for file in ~/.dotfiles/.{aliases,functions,bash_prompt}; do
   [ -r "$file" ] && source "$file"
