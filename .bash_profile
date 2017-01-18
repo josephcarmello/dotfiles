@@ -5,7 +5,11 @@ for file in ~/.dotfiles/.{aliases,functions,bash_prompt}; do
   [ -r "$file" ] && source "$file"
 done
 
-#export PATH="/usr/local/bin/packer:$PATH"
+#Let's make sure that all of our terminal tabs
+# have the correct name and dont get stuck with
+# the lsat server you logged into.
+export PROMPT_COMMAND="echo -ne '\033]0;${USER}@${HOSTNAME}\007';$PROMPT_COMMAND"
+
 #GENERAL SETTINGS
 
 HISTFILESIZE=10000000
