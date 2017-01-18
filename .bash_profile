@@ -18,17 +18,6 @@ HISTFILESIZE=10000000
 
 #FUNCTIONS FOR THE MODERN WORLD
 
-#   gos:  SSH for my work computer
-#   ---------------------------------------------------------
-	function gos(){
-	    if [[ $# -eq 0 ]]; then
-            echo "No arguments provided"
-        else
-            ssh jcarmello@"$1";
-        fi
-	}
-
-
 
 #   extract:  Extract most know archives with one command
 #   ---------------------------------------------------------
