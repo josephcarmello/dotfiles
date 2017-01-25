@@ -10,7 +10,7 @@ done
 # the last server you logged into.
 
 export PROMPT_COMMAND="echo -ne '\033]0;${USER}@${HOSTNAME}\007';$PROMPT_COMMAND"
-
+export HISTTIMEFORMAT="%d/%m/%y %T "
 #GENERAL SETTINGS
 
 HISTFILESIZE=10000000
