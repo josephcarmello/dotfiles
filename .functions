@@ -12,7 +12,7 @@
 #   clean:  Clean those damn known host errors
 #   --------------------------------------------------------
     kh () {
-        sed -i.bak -e "$1"'d' ~/known_hosts
+        sed -i.bak -e "$1"'d' ~/.ssh/known_hosts
     }
 
 #   extract:  Extract most know archives with one command
