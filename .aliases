@@ -34,7 +34,7 @@ alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on 
 alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
 alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
 alias flush="sudo killall -HUP mDNSResponder"
-alias sshi="ssh -i ~/.ssh/joeyc-keypair.pem"        # ssh /w aws    SSH command that sutomatically uses AWS pem
+alias sshi="ssh -i ~/.ssh/joeyc-keypair.pem ec2-user@$1"        # ssh /w aws    SSH command that sutomatically uses AWS pem
 alias vpnf="ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 admin@192.168.96.254"
 
 #SHOW/HIDE EVERYTHING - GREAT FOR PRESENTATIONS

@@ -172,6 +172,9 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+" Show eol values on vim
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set list
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
