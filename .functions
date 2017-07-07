@@ -58,3 +58,6 @@
         curl -is "$@" | sed '/^$/,$d'
     }
 
+function twitch() {
+  youtube-dl --quiet --no-warnings -f 480p --cookies ~/twitch-cookies "${1}" -o - | /Applications/VLC.app/Contents/MacOS/VLC --no-video-deco --no-embedded-video --no-interact --quiet - &
+}

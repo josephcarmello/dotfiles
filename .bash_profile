@@ -17,5 +17,6 @@ HISTFILESIZE=10000000
 
 # MacPorts Installer addition on 2016-04-25_at_13:30:49: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH=$PATH:/Applications/Utilities/sox-14.4.2
 # Finished adapting your PATH environment variable for use with MacPorts.
 
