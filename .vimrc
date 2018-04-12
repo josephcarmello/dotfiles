@@ -41,6 +41,7 @@ nmap <leader>w :w!<cr>
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
+cmap w!! w !sudo tee > /dev/null %
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -92,8 +93,8 @@ set hlsearch
 set incsearch 
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
-
+set lazyredraw
+set ttyfast
 " For regular expressions turn magic on
 set magic
 
@@ -112,7 +113,8 @@ set tm=500
 set foldcolumn=1
 
 " Add the horizontal cursor line
-set cursorline
+" SAD- This fucking destroys performance "
+"set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -347,7 +349,8 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-
+" Use the OS clipboard by default (on versions compiled with `+clipboard`)
+set clipboard=unnamed
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
