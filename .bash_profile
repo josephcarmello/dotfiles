@@ -1,6 +1,6 @@
 ulimit -S -n 2048
 
-for file in ~/.dotfiles/.{aliases,functions,bash_prompt}; do
+for file in ~/dotfiles/.{aliases,functions,bash_prompt}; do
   [ -r "$file" ] && source "$file"
 done
 
