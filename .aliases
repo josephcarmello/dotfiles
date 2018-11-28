@@ -38,6 +38,7 @@ alias flush="sudo killall -HUP mDNSResponder"
 alias sshi="ssh -i ~/.ssh/joeyc-keypair.pem ec2-user@$1"        # ssh /w aws    SSH command that sutomatically uses AWS pem
 alias vpnf="ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 admin@192.168.96.254"
 alias unfuck="git fetch origin && git reset --hard FETCH_HEAD && git checkout . && git clean -f -x -d && git submodule update && git rebase --abort && git merge --abort"
+alias epoch="date +%s"
 
 #SHOW/HIDE EVERYTHING - GREAT FOR PRESENTATIONS
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
