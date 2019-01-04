@@ -1,0 +1,28 @@
+#!/bin/env bash
+#Shared Utils
+. ./.shared/.shared_colors
+#
+echo "-----------------"
+printf "The ${RED}Doctor${NC} is in! \n"
+echo "-----------------"
+printf "${BLUE}Current User:${NC} $(whoami)\n"
+printf "${BLUE}Current Hostname:${NC} $(hostname)\n"
+
+#GIT CHECK
+git --version 2>&1 >/dev/null # improvement by tripleee
+PREV_CMD_EXIT=$?
+if [ $PREV_CMD_EXIT -eq 0 ]; then 
+    echo "√ Git is installed!"; 
+else
+    echo "You need Git!"; 
+fi
+#GIT CHECK
+#BREW CHECK
+brew help 2>&1 >/dev/null
+PREV_CMD_EXIT=$?
+if [ $PREV_CMD_EXIT -eq 0 ]; then 
+    echo "√ Brew is installed!"; 
+else
+    echo "You need Brew!"; 
+fi
+
