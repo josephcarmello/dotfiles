@@ -1,3 +1,6 @@
+#Shared Utils
+. ./.shared/.shared_colors
+#
 
 #   gos:  SSH for my work computer
 #   ---------------------------------------------------------
