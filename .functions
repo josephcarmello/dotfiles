@@ -1,5 +1,5 @@
 #Shared Utils
-. ./.shared/.shared_colors
+source ~/dotfiles/.shared/.shared_colors
 #
 
 #   clean:  Clean those damn known host errors
