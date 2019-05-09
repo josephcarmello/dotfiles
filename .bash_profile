@@ -21,6 +21,6 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 # GENERAL SETTINGS
 HISTFILESIZE=10000000
 
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="$HOME/.cargo/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 export EDITOR='vim'
 export VISUAL='vim'
