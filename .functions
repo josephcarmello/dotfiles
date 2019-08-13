@@ -53,3 +53,7 @@ source ~/dotfiles/.shared/.shared_colors
 function twitch() {
   youtube-dl --quiet --no-warnings -f 480p --cookies ~/twitch-cookies "${1}" -o - | /Applications/VLC.app/Contents/MacOS/VLC --no-video-deco --no-embedded-video --no-interact --quiet - &
 }
+
+function pug () {
+    ssh -t puppet "sudo -u root /bin/bash -c 'cd /etc/puppet/ && git pull'"
+}
