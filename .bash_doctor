@@ -16,7 +16,7 @@ if [ $PREV_CMD_EXIT -eq 0 ]; then
 else
     echo "You need Git!"; 
 fi
-#GIT CHECK
+#GIT CHECK END
 #BREW CHECK
 brew help 2>&1 >/dev/null
 PREV_CMD_EXIT=$?
@@ -25,4 +25,5 @@ if [ $PREV_CMD_EXIT -eq 0 ]; then
 else
     echo "You need Brew!"; 
 fi
+#BREW CHECK END
 
