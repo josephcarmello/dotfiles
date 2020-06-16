@@ -57,3 +57,6 @@ function twitch() {
 function pug () {
     ssh -t puppet "sudo -u root /bin/bash -c 'cd /etc/puppet/ && git pull'"
 }
+function xpurge () {
+    ssh -t oathkeeper "/usr/bin/curl -sikL 'https://www.1stdibs.com/purge/all/homepage'"
+}
