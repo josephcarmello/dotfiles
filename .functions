@@ -59,4 +59,5 @@ function pug () {
 }
 function xpurge () {
     ssh -t oathkeeper "/usr/bin/curl -sikL 'https://www.1stdibs.com/purge/all/homepage'"
+    ssh -t oathkeeper "/usr/bin/curl -sikL 'https://www.1stdibs.com/purge/homepage'"
 }
