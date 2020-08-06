@@ -20,3 +20,5 @@ HISTFILESIZE=10000000
 export PATH="$HOME/.cargo/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 export EDITOR='vim'
 export VISUAL='vim'
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
