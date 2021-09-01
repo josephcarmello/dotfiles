@@ -178,6 +178,17 @@ set wrap "Wrap lines
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
 
+"function that allows me to toggle listchar sets like eol,trail,tab,nbsp
+function! SetListToggle()
+  if(&list == 1)
+    set list!
+  else
+    set list
+  endif
+endfunc
+
+nnoremap <F2> :call SetListToggle()<cr>
+
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
