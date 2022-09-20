@@ -46,18 +46,41 @@ source ~/dotfiles/.shared/.shared_colors
 
 #   headers:  get the headers of a cURL request
 #   ---------------------------------------------------------
-	headers(){
+    headers(){
         curl -is "$@" | sed '/^$/,$d'
     }
 
-function twitch() {
-  youtube-dl --quiet --no-warnings -f 480p --cookies ~/twitch-cookies "${1}" -o - | /Applications/VLC.app/Contents/MacOS/VLC --no-video-deco --no-embedded-video --no-interact --quiet - &
-}
 
-function pug () {
-    ssh -t puppet "sudo -u root /bin/bash -c 'cd /etc/puppet/ && git pull'"
-}
-function xpurge () {
-    ssh -t oathkeeper "/usr/bin/curl -sikL 'https://www.1stdibs.com/purge/all/homepage'"
-    ssh -t oathkeeper "/usr/bin/curl -sikL 'https://www.1stdibs.com/purge/homepage'"
-}
+#   pug:  Puppet git pull on our remote puppet master
+#   ---------------------------------------------------------
+    function pug () {
+        ssh -t puppet.intranet.1stdibs.com "sudo -u root /bin/bash -c 'cd /etc/puppet/ && git pull'"
+    }
+
+#   weather:  Gets the current weather for my area via cli
+#   ---------------------------------------------------------
+    function weather () {
+        curl https://wttr.in/
+    }
+
+#   gbf:  brings a provided git branch back in line with the master branch
+#   ---------------------------------------------------------
+    function gbf () {
+        if [ $# -eq 0 ]
+          then
+            echo "No arguments supplied - ending"
+          else
+            echo "Attempting to bring $1 inline with master branch..."
+            echo "Checking out master branch"
+            git checkout master
+            echo "Fetching remote"
+            git fetch -p origin
+            echo "merge remote into local master"
+            git merge origin/master
+            echo "checking out feature branch"
+            git checkout $1
+            echo "merging feature branch with master"
+            git merge master
+            echo "All set!"
+        fi
+    }
