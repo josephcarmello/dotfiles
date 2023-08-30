@@ -84,3 +84,16 @@ source ~/dotfiles/.shared/.shared_colors
             echo "All set!"
         fi
     }
+
+#   listening:  find out whats listening on a port or what port an app is listening on
+#   ----------------------------------------------------------------------------------
+
+    listening() {
+        if [ $# -eq 0 ]; then
+            sudo lsof -iTCP -sTCP:LISTEN -n -P
+        elif [ $# -eq 1 ]; then
+            sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+        else
+            echo "Usage: listening [pattern]"
+        fi
+    }
