@@ -1,0 +1,2 @@
+#This file is used to construct a proper PATH variable based
+#on some localized logic if certain apps are installed.
