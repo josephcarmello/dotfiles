@@ -8,10 +8,6 @@ for file in ~/dotfiles/.shared/{*}; do
 done
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
-# Let's make sure that all of our terminal tabs
-# have the correct name and dont get stuck with
-# the last server you logged into.
-
 export PATH="$HOME/.cargo/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 export EDITOR='vim'
 export VISUAL='vim'
