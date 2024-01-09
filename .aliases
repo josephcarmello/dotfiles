@@ -43,9 +43,3 @@ alias epoch="date +%s"
 #SHOW/HIDE EVERYTHING - GREAT FOR PRESENTATIONS
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-#THEFUCK AUTOREPAIR COMMANDS
-eval $(thefuck --alias fuck)
-eval $(thefuck --alias crap)
-eval $(thefuck --alias shit)
-eval $(thefuck --alias FUCK)
