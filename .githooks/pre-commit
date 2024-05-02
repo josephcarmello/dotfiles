@@ -1,0 +1,18 @@
+#!/bin/bash
+
+current_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+repo_name=$(basename `git rev-parse --show-toplevel`)
+remote_repo_name=$(git config --get remote.origin.url | sed -e 's/.*://g' -e 's/\.git//g')
+repo_root=$(git rev-parse --show-toplevel)
+
+# Exit if any of the commands fail
+set -eo pipefail
+
+# Check if the current branch is master or main
+# If it is, then exit with a non-zero status
+if [ "$current_branch" == "master" ] || [ "$current_branch" == "main" ]; then
+    echo "Error: you are committing to the '$current_branch' branch."
+    exit 1
+fi
+
+exit 0
