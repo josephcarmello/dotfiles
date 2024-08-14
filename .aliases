@@ -33,9 +33,9 @@ alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'   # lsockT:       Display only
 alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
 alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
 alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
+alias ports="sudo lsof -iTCP -sTCP:LISTEN -n -P | awk 'NR>1 {print \$9, \$1, \$2}' | sed 's/.*://' | while read port process pid; do echo \"Port \$port: \$(ps -p \$pid -o command= | sed 's/^-//') (PID: \$pid)\"; done | sort -n"
 alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
 alias flush="sudo killall -HUP mDNSResponder"
-alias sshi="ssh -i ~/.ssh/joeyc-keypair.pem ec2-user@$1"        # ssh /w aws    SSH command that sutomatically uses AWS pem
 alias vpnf="ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 admin@192.168.96.254"
 alias unfuck="git fetch origin && git reset --hard FETCH_HEAD && git checkout . && git clean -f -x -d && git submodule update && git rebase --abort && git merge --abort"
 alias epoch="date +%s"
