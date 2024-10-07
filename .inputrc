@@ -1,2 +1,13 @@
 "\e\e[D": backward-word
 "\e\e[C": forward-word
+"\e[1;9C": forward-word
+"\e[1;9D": backward-word
+"\e[": skip-csi-sequence
+"\e[15~": skip-csi-sequence
+"\e[16~": skip-csi-sequence
+"\e[17~": skip-csi-sequence
+"\e[18~": skip-csi-sequence
+"\e[19~": skip-csi-sequence
+"\e[20~": skip-csi-sequence
+"\e[21~": skip-csi-sequence
+"\e[24~": skip-csi-sequence
