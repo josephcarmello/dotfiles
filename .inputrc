@@ -1,5 +1,5 @@
-"\e\e[D": backward-word
-"\e\e[C": forward-word
+"\e[D": backward-word
+"\e[C": forward-word
 "\e[1;9C": forward-word
 "\e[1;9D": backward-word
 "\e[": skip-csi-sequence
