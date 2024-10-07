@@ -6,7 +6,6 @@ brew "ansible"
 brew "ansible-lint"
 brew "little-cms2"
 brew "webp"
-brew "jpeg-xl"
 brew "aom"
 brew "apr-util"
 brew "python@3.11"
@@ -100,16 +99,15 @@ brew "yarn"
 brew "youtube-dl"
 brew "yt-dlp"
 brew "zoxide"
-brew "fastly/tap/fastly", link: false
 brew "ynqa/tap/jnv"
 cask "discord"
 cask "google-cloud-sdk"
 cask "macs-fan-control"
 cask "spotify"
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Logic Pro", id: 634148309
-mas "Microsoft Remote Desktop", id: 1295203466
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+#mas "GarageBand", id: 682658836
+#mas "iMovie", id: 408981434
+#mas "Keynote", id: 409183694
+#mas "Logic Pro", id: 634148309
+#mas "Microsoft Remote Desktop", id: 1295203466
+#mas "Numbers", id: 409203825
+#mas "Pages", id: 409201541
