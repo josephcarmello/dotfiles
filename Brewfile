@@ -2,6 +2,7 @@ tap "fastly/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "ynqa/tap"
+brew "xz"
 brew "little-cms2"
 brew "webp"
 brew "aom"
@@ -11,6 +12,7 @@ brew "bash"
 brew "libssh2"
 brew "libgit2"
 brew "bat"
+brew "bat-extras"
 brew "berkeley-db", link: true
 brew "btop"
 brew "glib"
@@ -65,8 +67,8 @@ brew "mas"
 brew "md5sha1sum", link: false
 brew "midnight-commander"
 brew "minica"
-brew "mysql"
 brew "mysql-client"
+brew "mysql@8.4", link: true
 brew "ncdu"
 brew "neofetch"
 brew "netcat"
@@ -76,6 +78,7 @@ brew "node"
 brew "openjdk"
 brew "perl"
 brew "php"
+brew "pigz"
 brew "pup"
 brew "python@3.11"
 brew "redis", restart_service: true
@@ -105,4 +108,10 @@ cask "google-cloud-sdk"
 cask "macs-fan-control"
 cask "slack"
 cask "spotify"
-cask "teleport-connect"
+cask "stats"
+cask "yubico-yubikey-manager"
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
