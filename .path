@@ -1,2 +1,15 @@
 #This file is used to construct a proper PATH variable based
 #on some localized logic if certain apps are installed.
+
+#### START HOMEBREW ####
+HOMEBREW_PATH="/opt/homebrew/bin"
+if [ -d "$HOMEBREW_PATH" ] && ! echo "$PATH" | grep -q "$HOMEBREW_PATH"; then
+    export PATH="$PATH:$HOMEBREW_PATH"
+
+    if [ -f "$HOME/.bash_profile" ]; then
+        echo "export PATH=\"$PATH\"" >> "$HOME/.bash_profile"
+    elif [ -f "$HOME/.zshrc" ]; then
+        echo "export PATH=\"$PATH\"" >> "$HOME/.zshrc"
+    fi
+fi
+#### END HOMEBREW ####
