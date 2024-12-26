@@ -1,5 +1,9 @@
 ulimit -S -n 2048
 
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
+fi
+
 for file in ~/dotfiles/.{aliases,functions,bash_prompt,path}; do
   [ -r "$file" ] && source "$file"
 done
