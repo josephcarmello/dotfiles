@@ -40,6 +40,8 @@ alias flush="sudo killall -HUP mDNSResponder"
 alias vpnf="ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 admin@192.168.96.254"
 alias unfuck="git fetch origin && git reset --hard FETCH_HEAD && git checkout . && git clean -f -x -d && git submodule update && git rebase --abort && git merge --abort"
 alias epoch="date +%s"
+alias docker="/Applications/Docker.app/Contents/Resources/bin/docker"
+alias tgdel='find ./ -type d -name ".terragrunt-cache" -exec rm -rf {} +'
 
 #SHOW/HIDE EVERYTHING - GREAT FOR PRESENTATIONS
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
