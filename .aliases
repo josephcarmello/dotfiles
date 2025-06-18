@@ -22,6 +22,7 @@ alias h="history"
 alias j="jobs"
 alias v="vim"
 alias e="eza -bghHliS --git"
+alias cat="bat"
 
 #NETWORKING
 alias myip='curl ifconfig.me'                       # myip:         Public facing IP Address
