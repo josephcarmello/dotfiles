@@ -1,18 +1,17 @@
-#Shared Utils
+# Shared Utils
 source ~/dotfiles/.shared/.shared_colors
-#
 
-#   clean:  Clean those damn known host errors
+#   kh: Clean those damn known host errors
 #   --------------------------------------------------------
-    kh () {
-        sed -i.bak -e "$1"'d' ~/.ssh/known_hosts
-    }
+kh() {
+    sed -i.bak -e "$1"'d' ~/.ssh/known_hosts
+}
 
-#   extract:  Extract most know archives with one command
-#   ---------------------------------------------------------
-    extract () {
-        if [ -f $1 ] ; then
-          case $1 in
+#   extract: Extract most known archives with one command
+#   --------------------------------------------------------
+extract() {
+    if [ -f $1 ]; then
+        case $1 in
             *.tar.bz2)   tar xjf $1     ;;
             *.tar.gz)    tar xzf $1     ;;
             *.bz2)       bunzip2 $1     ;;
@@ -24,83 +23,84 @@ source ~/dotfiles/.shared/.shared_colors
             *.zip)       unzip $1       ;;
             *.Z)         uncompress $1  ;;
             *.7z)        7z x $1        ;;
-            *)     echo "'$1' cannot be extracted via extract()" ;;
-             esac
-         else
-             echo "'$1' is not a valid file"
-         fi
-    }
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
 
-#   ii:  display useful host related informaton
-#   -------------------------------------------------------------------
-    ii() {
-        echo -e "\nYou are logged on ${RED}$HOST"
-        echo -e "\nAdditional information:$NC " ; uname -a
-        echo -e "\n${RED}Users logged on:$NC " ; w -h
-        echo -e "\n${RED}Current date :$NC " ; date
-        echo -e "\n${RED}Machine stats :$NC " ; uptime
-        echo -e "\n${RED}Public facing IP Address :$NC " ;myip
-        #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
-        echo
-    }
+#   ii: Display useful host related information
+#   --------------------------------------------------------
+ii() {
+    echo -e "\nYou are logged on ${RED}$HOST"
+    echo -e "\nAdditional information:$NC " ; uname -a
+    echo -e "\n${RED}Users logged on:$NC " ; w -h
+    echo -e "\n${RED}Current date :$NC " ; date
+    echo -e "\n${RED}Machine stats :$NC " ; uptime
+    echo -e "\n${RED}Public facing IP Address :$NC " ; myip
+    #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
+    echo
+}
 
-#   headers:  get the headers of a cURL request
-#   ---------------------------------------------------------
-    headers(){
-        curl -is "$@" | sed '/^$/,$d'
-    }
+#   headers: Get the headers of a cURL request
+#   --------------------------------------------------------
+headers() {
+    curl -is "$@" | sed '/^$/,$d'
+}
 
+#   pug: Puppet git pull on our remote puppet master
+#   --------------------------------------------------------
+pug() {
+    ssh -t puppet.intranet.1stdibs.com "sudo -u root /bin/bash -c 'cd /etc/puppet/ && git pull'"
+}
 
-#   pug:  Puppet git pull on our remote puppet master
-#   ---------------------------------------------------------
-    function pug () {
-        ssh -t puppet.intranet.1stdibs.com "sudo -u root /bin/bash -c 'cd /etc/puppet/ && git pull'"
-    }
+#   weather: Gets the current weather for my area via cli
+#   --------------------------------------------------------
+weather() {
+    curl https://wttr.in/
+}
 
-#   weather:  Gets the current weather for my area via cli
-#   ---------------------------------------------------------
-    function weather () {
-        curl https://wttr.in/
-    }
+#   gbf: Brings a provided git branch back in line with the master branch
+#   --------------------------------------------------------
+gbf() {
+    if [ $# -eq 0 ]; then
+        echo "No arguments supplied - ending"
+    else
+        echo "Attempting to bring $1 inline with master branch..."
+        echo "Checking out master branch"
+        git checkout master
+        echo "Fetching remote"
+        git fetch -p origin
+        echo "merge remote into local master"
+        git merge origin/master
+        echo "checking out feature branch"
+        git checkout $1
+        echo "merging feature branch with master"
+        git merge master
+        echo "All set!"
+    fi
+}
 
-#   gbf:  brings a provided git branch back in line with the master branch
-#   ---------------------------------------------------------
-    function gbf () {
-        if [ $# -eq 0 ]
-          then
-            echo "No arguments supplied - ending"
-          else
-            echo "Attempting to bring $1 inline with master branch..."
-            echo "Checking out master branch"
-            git checkout master
-            echo "Fetching remote"
-            git fetch -p origin
-            echo "merge remote into local master"
-            git merge origin/master
-            echo "checking out feature branch"
-            git checkout $1
-            echo "merging feature branch with master"
-            git merge master
-            echo "All set!"
-        fi
-    }
+#   listening: Find out what's listening on a port or what port an app is listening on
+#   --------------------------------------------------------
+listening() {
+    if [ $# -eq 0 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P
+    elif [ $# -eq 1 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+    else
+        echo "Usage: listening [pattern]"
+    fi
+}
 
-#   listening:  find out whats listening on a port or what port an app is listening on
-#   ----------------------------------------------------------------------------------
-
-    listening() {
-        if [ $# -eq 0 ]; then
-            sudo lsof -iTCP -sTCP:LISTEN -n -P
-        elif [ $# -eq 1 ]; then
-            sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
-        else
-            echo "Usage: listening [pattern]"
-        fi
-    }
-
+#   terragrunt: Run terragrunt in a containerized environment with SSH and AWS config
+#   --------------------------------------------------------
 terragrunt() {
     local GIT_RSA_KEY="${GIT_RSA_KEY:-$HOME/.ssh/id_rsa}"
     local GIT_CONFIG_PATH="${GIT_CONFIG_PATH:-$HOME/.gitconfig}"
+    local SSH_KNOWN_HOSTS_PATH="${SSH_KNOWN_HOSTS_PATH:-$HOME/.ssh/known_hosts}"
+    local SSH_CONFIG_PATH="${SSH_CONFIG_PATH:-$HOME/.ssh/config}"
     local AWS_CONFIG_PATH="${AWS_CONFIG_PATH:-$HOME/.aws}"
     local PROJECT_ROOT="${PROJECT_ROOT:-$HOME/projects/1stdibs/dibs-terraform}"
     local CONTAINER_WORKDIR="/data"
@@ -111,8 +111,10 @@ terragrunt() {
 
     docker run --rm \
         --tty --interactive \
+        --volume "$SSH_CONFIG_PATH:/root/.ssh/config:ro" \
         --volume "$GIT_CONFIG_PATH:/root/.gitconfig:ro" \
         --volume "$GIT_RSA_KEY:/root/.ssh/id_rsa:ro" \
+        --volume "$SSH_KNOWN_HOSTS_PATH:/root/.ssh/known_hosts:ro" \
         --volume "$AWS_CONFIG_PATH:/root/.aws" \
         --volume "$PROJECT_ROOT:$CONTAINER_WORKDIR" \
         --workdir "$CONTAINER_CWD" \
@@ -120,9 +122,12 @@ terragrunt() {
         terragrunt "$@"
 }
 
+#   terraform: Run terraform in a containerized environment with SSH and AWS config
+#   --------------------------------------------------------
 terraform() {
     local GIT_RSA_KEY="${GIT_RSA_KEY:-$HOME/.ssh/id_rsa}"
     local GIT_CONFIG_PATH="${GIT_CONFIG_PATH:-$HOME/.gitconfig}"
+    local SSH_KNOWN_HOSTS_PATH="${SSH_KNOWN_HOSTS_PATH:-$HOME/.ssh/known_hosts}"
     local AWS_CONFIG_PATH="${AWS_CONFIG_PATH:-$HOME/.aws}"
     local PROJECT_ROOT="${PROJECT_ROOT:-$HOME/projects/1stdibs/dibs-terraform}"
     local CONTAINER_WORKDIR="/data"
@@ -135,9 +140,27 @@ terraform() {
         --tty --interactive \
         --volume "$GIT_CONFIG_PATH:/root/.gitconfig:ro" \
         --volume "$GIT_RSA_KEY:/root/.ssh/id_rsa:ro" \
+        --volume "$SSH_KNOWN_HOSTS_PATH:/root/.ssh/known_hosts:ro" \
         --volume "$AWS_CONFIG_PATH:/root/.aws" \
         --volume "$PROJECT_ROOT:$CONTAINER_WORKDIR" \
         --workdir "$CONTAINER_CWD" \
         "$DOCKER_IMAGE" \
         terraform "$@"
+}
+
+#   setup_git_hosts: Add SSH host keys for common git providers to known_hosts
+#   --------------------------------------------------------
+setup_git_hosts() {
+    local KNOWN_HOSTS_FILE="${SSH_KNOWN_HOSTS_PATH:-$HOME/.ssh/known_hosts}"
+    
+    echo "Adding SSH host keys for common git providers to $KNOWN_HOSTS_FILE..."
+    
+    # Create known_hosts file if it doesn't exist
+    touch "$KNOWN_HOSTS_FILE"
+    
+    # Add GitHub
+    echo "Adding GitHub..."
+    ssh-keyscan -H github.com >> "$KNOWN_HOSTS_FILE" 2>/dev/null
+    
+    echo "SSH host keys added successfully!"
 }
